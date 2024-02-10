@@ -1,0 +1,101 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: "Trajan Pro", "Trajan Pro 3", "Trajan Pro Regular", serif;
+
+}
+header{
+    background-color: #c3f2ff;
+    border: 2px solid aqua;
+    box-shadow: 0 0 5px 1px black;
+}
+#collegeheading{
+    margin: 2rem;
+    justify-content: center;
+    text-wrap: wrap;
+    display: flex;
+    /* align-items: center; */
+}
+.section img{
+    width: 10rem;
+    height: 10rem;
+    filter: drop-shadow(0 0 0.50rem white);
+}
+.section h1{
+    font-size: 2rem;
+}
+.section h2{
+    font-size: 1.5rem;
+}
+.section h4{
+    font-size: 1rem;
+}
+
+
+
+@media screen and (max-width: 840px) {
+    .row>.col-lg-12{
+        margin: 0;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    #collegeheading{
+        /* margin: 2rem; */
+        padding: 0;
+        text-wrap: wrap;
+        display: flex;
+        /* height: 5rem; */
+        max-height: fit-content;
+        float: left;
+        text-wrap: wrap;
+        /* overflow:hidden; */
+        /* display: inline; */
+    }
+    .section h1{
+        font-size: 1rem;
+    }
+    .section h2{
+        font-size: 1rem;
+    }
+    .section h4{
+        font-size: 0.5rem;
+    }
+    .section img{
+        width: 6rem;
+        height:6rem;
+    }
+    
+}
+@media screen and (max-width:640px) {
+    header{
+        padding: 0;
+    }
+    #collegeheading{
+        margin:5px 0 0 0;
+        padding:0;
+        display: flex ;
+    }
+    .section{
+        padding-bottom: -5%;
+    }
+    .row>.col-lg-12{
+        margin: 0;
+        padding:0;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .section h1{
+        font-size: 1rem;
+    }
+    .section h2{
+        font-size: 1rem;
+    }
+    .section h4{
+        font-size: 0.5rem;
+    }
+    .section img{
+        width: 6rem;
+        height:6rem;
+    }
+    
+}

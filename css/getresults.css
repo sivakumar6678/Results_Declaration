@@ -1,0 +1,147 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    /* background-color: rgba(255, 0, 0, 0.534); */
+}
+#viewresults{
+    margin:1rem;
+    place-items: center;
+    display: flex;
+    /* background-color: red; */
+}
+.card{
+    background-color: green;
+    /* width:75%; */
+    display: flex;
+    align-items: center;
+    place-content: center;
+}
+
+.card-body{
+    margin: 1rem ;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: scroll;
+    /* background-color: rgba(72, 255, 0, 0.534); */
+}
+table>thead>tr>th{
+    padding: 0.5rem;
+    border: 1px solid black;
+    /* border-radius: 5px; */
+    background-color: rgba(12, 61, 175, 0.534);
+}
+header{
+    background-color: #c3f2ff;
+    box-shadow: 0 0 5px 1px black;
+}
+#collegeheading{
+    margin: 2rem;
+    justify-content: center;
+    text-wrap: wrap;
+    display: flex;
+    /* align-items: center; */
+}
+.section img{
+    width: 12rem;
+    height: 12rem;
+}
+.section h1{
+    font-size: 2.5rem;
+}
+.section h2{
+    font-size: 2rem;
+}
+.section h4{
+    font-size: 1.25rem;
+}
+.resultdisclimer{
+    margin: 1rem;
+    padding: 1rem;
+    text-wrap: wrap;
+    display: flex;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    /* background-color: rgba(72, 255, 0, 0.534); */
+    /* box-shadow: 0 0 1px 1px black; */
+
+}
+
+.downloadbtn .col-lg-2 .btn-info{
+    margin: 0 0 1rem 0 ;
+    font-size: 1.25rem;
+    font-weight: bold;
+    width: 10rem;
+    height: 3rem;
+    /* background-colo/r: red; */
+}
+
+@media (max-width: 576px) {
+    .custom-container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .card-body {
+        /* margin: 0 -20%; */
+        padding: 10px;
+
+    }
+}
+@media screen and (max-width: 600px) {
+    .card-body {
+        margin: 0 1% 0 -10%;
+        padding: 10px;
+
+    }  
+}
+@media screen and (max-width: 840px) {
+    #collegeheading{
+        margin: 2rem;
+        text-wrap: wrap;
+        display: inline;
+    }
+    .section h1{
+        font-size: 2rem;
+    }
+    .section h2{
+        font-size: 1.5rem;
+    }
+    .section h4{
+        font-size: 1rem;
+    }
+    .card-body{
+        /* background-color:red; */
+        margin: 0 2rem 0 0;
+        font-size: 1rem;
+        /* display: inline; */
+        justify-content: center;
+        text-wrap: wrap;
+        
+        align-items: center;
+        place-content: center;
+
+    }
+}
+@media screen and (max-width: 768px) {
+    .card-body {
+        margin: auto;
+        display: inline;
+        justify-content: center;
+        text-wrap: wrap;
+        align-items: center;
+        place-content: center;
+        
+        /* margin-left:-5%; */
+        /* padding: 10px; */
+
+    }
+    .table{
+        font: 1em sans-serif;
+        overflow:hidden;
+    }
+}
+
+

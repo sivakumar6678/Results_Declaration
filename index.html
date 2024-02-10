@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JNTUACEK RESULTS </title>
+    <link rel="icon" href="images/collegelogo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+    <header class="container-fluid" >
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center" id="collegeheading">
+                    <div class="section">
+                        <img src="images/collegelogo.png" alt="JNTUACEK">
+                    </div>
+                    <div class="section">
+                        <h1>JNTUA College of Engineering Kalikiri (Autonomous)</h1>
+                        <h1>జవహర్‌లాల్ నెహ్రూ సాంకేతిక విశ్వవిద్యాలయం కలికిరి</h1>
+                        <h4>Kalikiri, Annamayya Dist, Andhra Pradesh, India Pin : 517234</h4>
+                        <h2 class="text-center">Examination Results</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div id="linksContainer"></div>
+    </div>
+    <script>
+    // Function to fetch and display links using AJAX
+    function fetchLinks() {
+        $.ajax({
+            url: 'php/display_links.php', // URL of the PHP file to fetch links
+            type: 'GET',
+            success: function(response) {
+                $('#linksContainer').html(response); // Update the links container with fetched content
+            },
+            error: function(xhr, status, error) {
+                console.error(error); // Log any errors to the console
+            }
+        });
+    }
+
+    // Call the fetchLinks function when the page loads
+    $(document).ready(function() {
+        fetchLinks();
+    });
+    </script>
+    
+</body>
+</html>

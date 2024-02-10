@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    font-family: "Trajan Pro", "Trajan Pro 3", "Trajan Pro Regular", serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+td a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+td a:hover {
+    color: #0056b3;
+}
+
+td {
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+
+}
+
+.pagination {
+    clear: right;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+    border-radius: 4px;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination a:hover {
+    background-color: #f2f2f2;
+}
+
+#newgif{
+     /* background-color:none; */
+     background:transparent;
+    
+    }
+#newgif img{       
+    height:30px;
+    width:40px;
+}
+
+.modal-header{
+    text-align: center;
+    background-color: #0d4c90;
+    color: #fff;
+    padding: 10px 15px;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.modal-header>h5{
+    /* background: #000; */
+    margin: 0 0 0 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+form .text-center .btn{
+    /* background: #000; */
+    margin:1rem 1rem 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.9s ease;
+
+}
