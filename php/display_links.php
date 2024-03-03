@@ -74,10 +74,10 @@ if ($result->num_rows > 0) {
                     <legend>Get Results</legend>
                     <label class="input-group-prepend" for="rollno">Enter HallTicket Number  </label>
                     <input type="text" name="rollno" class="form-control" placeholder="Hallticket Number" maxlength="10" required>                   
-                    <label for="dateofbirth" class="input-group-prepend">Date Of Birth</label>
-                    <input type="date" name="dateofbirth" class="form-control" id="dateofbirth" required>
+                    <!-- <label for="dateofbirth" class="input-group-prepend">Date Of Birth</label>
+                    <input type="date" name="dateofbirth" class="form-control" id="dateofbirth" required> -->
                     
-                    <div style="display:nne;">
+                    <div style="display:none;">
                         <label for="year">Year:</label>
                         <input type="text" id="year" name="year" class="form-control" required>
                         <label for="semester">Semester:</label>

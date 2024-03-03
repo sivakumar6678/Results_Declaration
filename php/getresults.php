@@ -10,32 +10,49 @@ $regulation = $_POST['regulation'];
 $month_of_result = $_POST['month_of_result'];
 $year_of_result = $_POST['year_of_result'];
 $type_of_exam = $_POST['type_of_exam'];
-$dateofbirth = $_POST['dateofbirth'];
+// $dateofbirth = $_POST['dateofbirth'];
+function tonumber($number){
+    $map = array('I'=> 1,'V'=> 5,'X'=> 10,'L'=> 50,'C'=> 100,'D'=> 500,'M'=> 1000);
+    $returnValue = '';
+    while ($number > 0) {
+        foreach ($map as $roman=>$int) {
+            if($number >= $int) {
+                $number -= $int;
+                $returnValue .= $roman;
+                break;
+            }
+        }
+    }
+    return $returnValue;
+}
+
+$yearno = tonumber($year);
+$semno = tonumber($semester);
 
 
 // SQL query to retrieve data for the first table
-$FirstTable = "SELECT Admission_No, Name, Branch FROM studentdata WHERE Admission_No = ? AND 	Date_of_birth = ? ";
-$FirstTable = $conn->prepare($FirstTable);
-$FirstTable->bind_param("ss",$rollno, $dateofbirth);
-$FirstTable->execute();
-$resultTable = $FirstTable->get_result();
-// Check if no results were found in the first table
-if ($resultTable->num_rows === 0) {
-    echo "<script>alert('No results found for Admission No: $_POST[rollno]'); window.location.href = document.referrer;</script>";
-    exit;
-}
+// $FirstTable = "SELECT REGNO, NAME, BRANCH FROM studentdata WHERE REGNO = ? AND 	DOB = ? ";
+// $FirstTable = $conn->prepare($FirstTable);
+// $FirstTable->bind_param("ss",$rollno, $dateofbirth);
+// $FirstTable->execute();
+// $resultTable = $FirstTable->get_result();
+// // Check if no results were found in the first table
+// if ($resultTable->num_rows === 0) {
+//     echo "<script>alert('No results found for Admission No: $_POST[rollno]'); window.location.href = document.referrer;</script>";
+//     exit;
+// }
 
 // Close the prepared statement for the first table
-$FirstTable->close();
+// $FirstTable->close();
 
-$sqlFirstTable = "SELECT Year, Sem, Branch FROM studentmarks WHERE RegNo = ? AND Year = ? AND Sem = ? AND ExamMonth  = ? AND ExamYear = ? AND ExamType = ? ";
+$sqlFirstTable = "SELECT REGNO,YEAR, SEM, BRANCH FROM studentmarks WHERE REGNO = ? AND YEAR = ? AND SEM = ? AND EXAMMONTH  = ? AND EXAMYEAR = ? AND EXAMTYPE = ? ";
 $stmtFirstTable = $conn->prepare($sqlFirstTable);
 $stmtFirstTable->bind_param("ssssss", $rollno, $year, $semester, $month_of_result, $year_of_result, $type_of_exam);
 $stmtFirstTable->execute();
 $resultFirstTable = $stmtFirstTable->get_result();
 
 // SQL query to retrieve data for the second table
-$sqlSecondTable = "SELECT SubCode, SubName, IM, EM,Total, Result, Grade, Credits FROM studentmarks WHERE RegNo = ? AND Year = ? AND Sem = ? AND  ExamMonth = ? AND ExamYear = ? AND ExamType = ?";
+$sqlSecondTable = "SELECT SUBCODE, SUBNAME, IM, EM,TOTAL, RESULT, GRADE, CREDITS FROM studentmarks WHERE REGNO = ? AND YEAR = ? AND SEM = ? AND EXAMMONTH  = ? AND EXAMYEAR = ? AND EXAMTYPE = ? ";
 $stmtSecondTable = $conn->prepare($sqlSecondTable);
 $stmtSecondTable->bind_param("ssssss", $rollno, $year, $semester, $month_of_result, $year_of_result, $type_of_exam);
 $stmtSecondTable->execute();
@@ -123,7 +140,7 @@ $conn->close();
         <div class="container">
 
             <?php
-            echo '<div class="row"> <div class="col text-center"><h3>' . $year . ' B.Tech ' . $semester . ' Sem ' . $regulation . ' ' . $type_of_exam . ' Examinations ' . $month_of_result . ' ' . $year_of_result . '</h3></div></div>';
+            echo '<div class="row"> <div class="col text-center"><h3>' . $yearno . ' B.Tech ' . $semno . ' Sem ' . $regulation . ' ' . $type_of_exam . ' Examinations ' . $month_of_result . ' ' . $year_of_result . '</h3></div></div>';
             ?>
         </div>
     </div>
@@ -131,26 +148,26 @@ $conn->close();
     <div class="container-fluid custom-container" id="viewresults">
         <!-- <div class="col-lg-2 col-xs-12"></div> -->
         <div class="col-lg-12 col-xs-12 col-sm-12">
-            <div class="card table-responsive">
+            <div class="card ">
 
                 <div class="card-body">
                     <!-- Table for the first set of columns -->
                     <table class="table table-borderless ">
 
                         <tbody id="tablefirst">
-                            <?php
-                            // Display retrieved data in table rows for the first table
-                            if ($row = $resultTable->fetch_assoc()) {
+                            <!-- // Display retrieved data in table rows for the first table -->
+                            <!-- if ($row = $resultTable->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<th>Admission No</th>";
-                                echo "<td>" . $row['Admission_No'] . "</td></tr>";
-                                echo "<tr><th>Student Name</th>";
-                                echo "<td>" . $row['Name'] . "</td></tr>";
-                                echo "<tr><th>Branch</th>";
-                                echo "<td>" . $row['Branch'] . "</td></tr>";
-                            }
+                                    echo "<th>Admission No</th>";
+                                    echo "<td>" . $row['REGNO'] . "</td></tr>";
+                                    echo "<tr><th>Student Name</th>";
+                                    echo "<td>" . $row['NAME'] . "</td></tr>";
+                                    echo "<tr><th>Branch</th>";
+                                    echo "<td>" . $row['BRANCH'] . "</td></tr>";
+                                } -->
+                                <?php
                             if($row = $resultFirstTable->fetch_assoc() ) {
-                                echo "<tr><th>Year</th><td>" . $row['Year'] . "</td><th>Semester</th><td> " . $row['Sem'] . "</td></tr>";
+                                echo "<tr><th style='float:right;'>Admission No</th><td>". $row['REGNO']."</td></tr>";
                             }
                             ?>
                         </tbody>
@@ -175,17 +192,17 @@ $conn->close();
                             // Display retrieved data in table rows for the second table
                             while ($row = $resultSecondTable->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td>" . $row['SubCode'] . "</td>";
-                                echo "<td>" . $row['SubName'] . "</td>";
+                                echo "<td>" . $row['SUBCODE'] . "</td>";
+                                echo "<td>" . $row['SUBNAME'] . "</td>";
                                 echo "<td>" . $row['IM'] . "</td>";
                                 echo "<td>" . $row['EM'] . "</td>";
-                                echo "<td>" . ($row['Total']) . "</td>";
+                                echo "<td>" . ($row['TOTAL']) . "</td>";
                                 // Check for 'F' and apply style
-                                $resultStatusStyle = ($row['Result'] == 'F') ? 'background-color: rgba(232, 9, 9,0.5); font-weight: bold;' : '';
-                                echo "<td style='$resultStatusStyle'>" . $row['Result'] . "</td>";
+                                $resultStatusStyle = ($row['RESULT'] == 'F') ? 'background-color: rgba(232, 9, 9,0.5); font-weight: bold;' : '';
+                                echo "<td style='$resultStatusStyle'>" . $row['RESULT'] . "</td>";
                                 // echo "<td>" . $row['Result_status'] . "</td>";
-                                echo "<td>" . $row['Grade'] . "</td>";
-                                echo "<td>" . $row['Credits'] . "</td>";
+                                echo "<td>" . $row['GRADE'] . "</td>";
+                                echo "<td>" . $row['CREDITS'] . "</td>";
                                 echo "</tr>";
                             }
                             ?>
@@ -217,17 +234,47 @@ $conn->close();
 
    
     <script>
-        $(document).ready(function() {
-    // Event listener for link clicks
-    $('.result-link').click(function(event) {
-        event.preventDefault();
-        var linkUrl = $(this).attr('href'); // Get the href attribute of the clicked link
+    $(document).ready(function() {
+        function romanToNumber(roman) {
+        var romanNumeralMap = {
+            'I': 1,
+            'V': 5,
+            'X': 10,
+            'L': 50,
+            'C': 100,
+            'D': 500,
+            'M': 1000
+        };
+        var result = 0;
+        var prevValue = 0;
 
-        // Extract the necessary parameters from the linkUrl
-        var params = linkUrl.split('?')[1]; // Assuming the parameters are passed in the query string
-        window.location.href = 'getresults.php?' + params; // Redirect to the new page with parameters
-    });
+        for (var i = roman.length - 1; i >= 0; i--) {
+            var value = romanNumeralMap[roman[i]];
+
+            if (value >= prevValue) {
+                result += value;
+            } else {
+                result -= value;
+            }
+
+            prevValue = value;
+        }
+
+        return result;
+    }
 });
+
+//         $(document).ready(function() {
+//     // Event listener for link clicks
+//     $('.result-link').click(function(event) {
+//         event.preventDefault();
+//         var linkUrl = $(this).attr('href'); // Get the href attribute of the clicked link
+
+//         // Extract the necessary parameters from the linkUrl
+//         var params = linkUrl.split('?')[1]; // Assuming the parameters are passed in the query string
+//         window.location.href = 'getresults.php?' + params; // Redirect to the new page with parameters
+//     });
+// });
 
     </script>
 </body>

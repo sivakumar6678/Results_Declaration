@@ -36,7 +36,7 @@ include ('topmenu.php');
                             <form name="loginForm" method="post" action="adminlogin.php" onsubmit="return validateForm()">
                                 <!-- <legend>Admin Login</legend> -->
                                 <label for="username">Username:</label>
-                                <input type="text" name="username" class="form-control" placeholder="Username" maxlength="10">
+                                <input type="text" name="username" class="form-control" placeholder="Username" maxlength="20">
                                 <label for="password">Password:</label>
                                 <input type="password" name="password" class="form-control" placeholder="Password" maxlength="10">
                                 <!-- <div class="g-recaptcha" data-sitekey="6Lc6QqQaAAAAAFCZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4Z4Z4Z"></div> --><br>

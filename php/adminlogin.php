@@ -23,7 +23,8 @@ if ($result->num_rows > 0) {
     $_SESSION["admin"] = $username;
 } else {
     // Invalid login
-    header("Location: adminportal.php?error=1"); // Redirect with an error code
+    header("Location: admin.php?error=1"); // Redirect with an error code
+    exit;
 }
 
 // Close the database connection

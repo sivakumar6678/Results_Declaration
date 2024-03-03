@@ -11,6 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($handle !== false) {
             // Read the header row
             $header = fgetcsv($handle, 1000, ",");
+            // Convert header to uppercase
+            $header = array_map('strtoupper', $header);
 
             // Prepare the SQL statement using prepared statements
             $sql = "INSERT INTO studentmarks (" . implode(",", $header) . ") VALUES (" . rtrim(str_repeat("?,", count($header)), ",") . ")";
@@ -71,4 +73,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Close the database connection
 $conn->close();
 ?>
-
